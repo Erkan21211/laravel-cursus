@@ -23,8 +23,8 @@ class PostFactory extends Factory
             'user_id' => User::factory(),
             'title' => fake()->unique()->sentence(),
             'slug' => fake()->unique()->slug(),
-            'excerpt' => fake()->paragraph(),
-            'body' => fake()->paragraphs(3, true),
+            'excerpt' => '<p>' . implode('</p><p>', $this->faker->paragraphs(2)) . '</p>',
+            'body' => '<p>' . implode('</p><p>', $this->faker->paragraphs(2)) . '</p>',
             'published_at' => now(),
         ];
     }

@@ -28,11 +28,11 @@ class DatabaseSeeder extends Seeder
             'name' => fake()->unique()->name(gender: "male"),
         ])->first();
 
-        Post::factory(5)->create([
+        Post::factory(15)->create([
             'user_id' => $user->id,
         ])->first();
 
-        Post::factory(2)->create([
+        Post::factory(15)->create([
             'user_id' => $user2->id,
         ])->first();
 
