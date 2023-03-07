@@ -26,18 +26,4 @@ class PostController extends Controller
             'post' => $post,
         ]);
     }
-//$this->getPosts()
-
-//    protected function getPosts()
-//    {
-//        $posts = Post::with('category', 'author')->latest();
-//
-//        if (request('search')) {
-//            $posts->where('title', 'like', '%' . request('search') . '%')
-//                ->orWhere('body', 'like', '%' . request('search') . '%');
-//        }
-//
-//        return $posts->latest()->get();
-//    }
-
 }

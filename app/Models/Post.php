@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Post extends Model
 {
@@ -49,21 +50,22 @@ class Post extends Model
         );
     }
 
-    // guarded is the opposite of fillable
-     protected $guarded = [
-         'id'
-     ];
 
 
+    // post has many comments
+    public function comments(): HasMany
+    {
+        return $this->hasMany(Comment::class);
+    }
 
-     // if a post belongs to a category
 
+    // post belongs to a category
     public function category(): BelongsTo
      {
          return $this->belongsTo(Category::class);
      }
 
-     // if a post belongs to a user or written by a user
+    // post belongs to an author
      public function author(): BelongsTo
      {
          // user_id is the foreign key

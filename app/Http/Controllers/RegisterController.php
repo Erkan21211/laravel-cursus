@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -24,9 +25,11 @@ class RegisterController extends Controller
 
         $attributes['password'] = bcrypt($attributes['password']);
 
-        User::query()->create($attributes);
+        $user = User::query()->create($attributes);
 
-        return redirect('/');
+        Auth::login($user);
+
+        return redirect('/')->with('success', 'Your account has been created');
     }
 
 
